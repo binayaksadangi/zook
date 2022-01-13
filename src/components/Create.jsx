@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import { db, storage } from "../firebaseConfig";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
   Button,
   Stack,
-  Alert,
   TextField,
-  IconButton,
+  CircularProgress,
   Typography,
   Container,
 } from "@mui/material";
@@ -33,51 +33,88 @@ const useStyles = makeStyles({
 const Create = () => {
   const classes = useStyles();
   const [caption, setCaption] = useState("");
+  const [imgURL,setImgURL] = useState('');
+  // const [prog, setProg] = useState(0);
   const capCollRef = collection(db, "Posts");
   const navigate = useNavigate();
 
   const createPost = async (e) => {
     e.preventDefault();
+    // const file = e.target[2].files[0];
+    // uploadFile(file);
     if (caption) {
-      await addDoc(capCollRef, { caption:caption })
-      .then(()=>{navigate('/')});
+      await addDoc(capCollRef, { caption: caption,imgURL:imgURL }).then(() => {
+         navigate("/");
+      });
       setCaption("");
     }
-    console.log(caption);
+  
   };
+
+  // const uploadFile = (file) => {
+  //   if (!file) return;
+  //   const storageRef = ref(storage, `/files/${file.name}`);
+  //   const uploadTask = uploadBytesResumable(storageRef, file);
+
+  //   uploadTask.on(
+  //     "state_changed",
+  //     (snapshot) => {
+  //       const prog = Math.round(
+  //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+  //       );
+  //       setProg(prog);
+  //     },
+  //     (err) => {
+  //       console.log(err);
+  //     },
+  //    async () => {
+  //      try {
+  //        const url = await getDownloadURL(storageRef)
+  //        .then(()=>{setImgURL(url.toString())});
+         
+  //      } catch (error) {
+  //        console.log(error)
+  //      }
+  //     }
+  //   );
+  // };
 
   return (
     <Container>
       <Box className={classes.box}>
-          <form onSubmit={createPost}>
-        <Stack spacing={1}>
-          <Typography mt={2} variant="body1">
-            Create a post
-          </Typography>
-          <TextField
-            onChange={(e) => setCaption(e.target.value)}
-            maxRows={3}
-            label="type..."
-
-            multiline
-            variant="standard"
-            required
-          />
-          <Button type="submit" variant="contained" color="primary">
-            Post
-          </Button>
-          <Button
-           
-            variant="outlined"
-            color="error"
-          >
-            Back
-          </Button>
-          <IconButton variant="outlined" color="secondary">
-            <AddPhotoAlternateOutlinedIcon />
-          </IconButton>
-        </Stack>
-            </form>
+        <form onSubmit={createPost}>
+          <Stack spacing={1}>
+            <Typography mt={2} variant="body1">
+              Create a post
+            </Typography>
+            <TextField
+              onChange={(e) => setCaption(e.target.value)}
+              maxRows={3}
+              label="type..."
+              multiline
+              variant="standard"
+              required
+            />
+                   <TextField
+                  className={classes.txt}
+                onChange={(e) => setImgURL(e.target.value)}
+                label="image url..."
+                 variant="standard"
+                />
+            <Button type="submit" variant="contained" color="primary">
+              Post
+            </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Back
+            </Button>
+          </Stack>
+        </form>
       </Box>
     </Container>
   );
