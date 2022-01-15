@@ -8,9 +8,12 @@ import {
   Typography,
   Container,
 } from "@mui/material";
-
+import { useNavigate } from "react-router-dom";
+import { auth } from "../firebaseConfig";
+import { GoogleAuthProvider,signInWithPopup } from "firebase/auth";
 import { makeStyles } from "@mui/styles";
 import { Login } from "@mui/icons-material";
+import GoogleIcon from '@mui/icons-material/Google';
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -33,6 +36,19 @@ const useStyles = makeStyles({
 
 const Signup = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
+  const signInWithGoogle = () =>{
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth,provider)
+    .then((res)=>{
+      console.log(res);
+      navigate("/");
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
+
   return (
     <Container>
       <Box className={classes.box}>
@@ -42,7 +58,7 @@ const Signup = () => {
           </Grid>
 
           <Grid container spacing={1} xs={12} md={6}>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <Typography variant="h5" align="center">
                 Sign Up
               </Typography>
@@ -55,15 +71,15 @@ const Signup = () => {
             </Grid>
             <Grid item xs={12}>
               <TextField label="Confirm Password" variant="outlined" />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
-              <Button startIcon={<Login/>} variant="contained">Signup</Button>
+              <Button onClick={signInWithGoogle} startIcon={<GoogleIcon/>} variant="contained">SignIN</Button>
             </Grid>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <Typography variant="caption" align="center">
                 Already have an account? <Link to='/login'>Login</Link>
               </Typography>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </Box>

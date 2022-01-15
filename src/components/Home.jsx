@@ -1,6 +1,7 @@
 import { Container, Grid, Fab, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import Posts from "./Posts";
+import LeftBar from "./LeftBar";
 import CrerateDialog from "./CrerateDialog";
 import { db } from "../firebaseConfig";
 import AddIcon from "@mui/icons-material/Add";
@@ -34,6 +35,7 @@ const Home = () => {
     <Container>
       <Grid container spacing={3}>
         <Grid item xs={0} md={3}>
+          <LeftBar />
           <Typography variant="h6">{posts.length} posts</Typography>
         </Grid>
         <Grid container spacing={2} item xs={12} md={6}>
