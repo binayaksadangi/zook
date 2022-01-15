@@ -35,8 +35,8 @@ const Home = () => {
     <Container>
       <Grid container spacing={3}>
         <Grid item xs={0} md={3}>
-          <LeftBar />
-          <Typography variant="h6">{posts.length} posts</Typography>
+          {/* <LeftBar />
+          <Typography variant="h6">{posts.length} posts</Typography> */}
         </Grid>
         <Grid container spacing={2} item xs={12} md={6}>
          
