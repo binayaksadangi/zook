@@ -38,11 +38,18 @@ const styles = makeStyles({
   },
   logOut: {
     // border: "1px solid red",
-    margin: "10px",
+    margin: "5px",
     padding: "10px",
     display: "flex",
     justifyContent: "center",
   },
+  create: {
+      display: "flex",
+      justifyContent: "center",
+    //  border: "1px solid red",
+     marginTop: "15px",
+     padding: "5px",
+  }
 });
 
 const LeftBar = () => {
@@ -62,6 +69,9 @@ const LeftBar = () => {
       })
   }
 
+    const create =()=>{
+        navigate('/create');
+    }
   return (
     <div className={classes.conatiner}>
       <Typography className={classes.heading} variant="h5">
@@ -81,6 +91,11 @@ const LeftBar = () => {
             <Button variant="contained" color="primary">
               Edit Profile
             </Button>
+          </div>
+          <div className={classes.create}>
+              <Button 
+              onClick={create}
+              variant="contained">Create Post</Button>
           </div>
           <div className={classes.logOut}>
             <Button

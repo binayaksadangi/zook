@@ -41,9 +41,9 @@ const CrerateDialog = () => {
 
     return (
         <div>
-          <Fab onClick={handleClickOpen} color="primary">
+          {/* <Fab onClick={handleClickOpen} color="primary">
             <AddIcon />
-          </Fab>
+          </Fab> */}
               <form onSubmit={createPost}>
           <Dialog open={open} onClose={handleClose}> 
               <DialogTitle>Create Post</DialogTitle>
