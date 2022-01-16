@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e6c13ad2.css",
+    "main.js": "/static/js/main.31b37e73.js",
+    "static/media/ZOOK.png": "/static/media/ZOOK.de1485fbfaec2d907591.png",
+    "static/media/signup.svg": "/static/media/signup.963794930849de0c0be579e5b379c152.svg",
+    "index.html": "/index.html",
+    "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
+    "main.31b37e73.js.map": "/static/js/main.31b37e73.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.31b37e73.js"
+  ]
+}
