@@ -35,7 +35,7 @@ const Create = () => {
   const [caption, setCaption] = useState("");
   const [imgURL,setImgURL] = useState('');
   // const [prog, setProg] = useState(0);
-  const capCollRef = collection(db, "Posts");
+  const capCollRef = collection(db, "newPosts");
   const navigate = useNavigate();
 
   const createPost = async (e) => {
@@ -90,7 +90,7 @@ const Create = () => {
             <TextField
               onChange={(e) => setCaption(e.target.value)}
               maxRows={3}
-              label="type..."
+              label=""
               multiline
               variant="standard"
               required
@@ -98,7 +98,7 @@ const Create = () => {
                    <TextField
                   className={classes.txt}
                 onChange={(e) => setImgURL(e.target.value)}
-                label="image url..."
+                label="img url..."
                  variant="standard"
                 />
             <Button type="submit" variant="contained" color="primary">

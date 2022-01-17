@@ -129,19 +129,3 @@ const Signup = () => {
 };
 
 export default Signup;
-{
-  /* <Box className={classes.box}>
-<Grid container>
-  <Grid item xs={0} md={6}>
-    <img src={img} alt="" />
-  </Grid>
-
-  <Grid container spacing={1} xs={12} md={6}>
-         <Grid item xs={12}>
-      
-    </Grid>
-
-  </Grid>
-</Grid>
-</Box> */
-}

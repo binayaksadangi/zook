@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 const Home = () => {
   const classes = useStyles();
   const [posts, setPosts] = useState([]);
-  const postCollRef = collection(db, "Posts");
+  const postCollRef = collection(db, "newPosts");
 
   useEffect(() => {
     const getPosts = async () => {
